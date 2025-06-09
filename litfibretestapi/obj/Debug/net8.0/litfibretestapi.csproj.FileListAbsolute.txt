@@ -45,3 +45,4 @@ C:\Users\magic\Documents\GitHub\LitFibreTest2025\litfibretestapi\obj\Debug\net8.
 C:\Users\magic\Documents\GitHub\LitFibreTest2025\litfibretestapi\obj\Debug\net8.0\litfibretestapi.pdb
 C:\Users\magic\Documents\GitHub\LitFibreTest2025\litfibretestapi\obj\Debug\net8.0\litfibretestapi.genruntimeconfig.cache
 C:\Users\magic\Documents\GitHub\LitFibreTest2025\litfibretestapi\obj\Debug\net8.0\ref\litfibretestapi.dll
+C:\Users\magic\Documents\GitHub\LitFibreTest2025\litfibretestapi\obj\Debug\net8.0\litfibretestapi.sourcelink.json

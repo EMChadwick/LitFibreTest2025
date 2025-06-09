@@ -7,9 +7,9 @@ using litfibretestapi.Enums;
 namespace litfibretestapi.DTOs {
     public class ValidationError {
         [Required]
-        public string field { get; set; }
+        public string Field { get; set; }
         [Required]
-        public string message { get; set; }
+        public string Message { get; set; }
         
 
     }

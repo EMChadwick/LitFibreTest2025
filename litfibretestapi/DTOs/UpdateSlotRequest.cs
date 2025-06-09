@@ -6,5 +6,5 @@ using litfibretestapi.Interfaces;
 
 public class UpdateSlotRequest : IAppointmentUpdateRequest {
     [Required]
-    public Slot slot { get; set; }
+    public Slot Slot { get; set; }
 }

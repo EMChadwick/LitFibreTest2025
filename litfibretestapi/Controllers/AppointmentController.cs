@@ -33,17 +33,17 @@ namespace litfibretestapi.Controllers
             }
 
             //Type should have been validated already by the model binding, but we want to check the slot's times.
-            if (!isValidTime(request.slot.Start, request.slot.End))
+            if (!isValidTime(request.Slot.Start, request.Slot.End))
             {
-                return BadRequest(new ValidationError { field = "slot.Start", message = "End time must be after Start time" });
+                return BadRequest(new ValidationError { Field = "slot.Start", Message = "End time must be after Start time" });
             }
-            if (request.slot.appointmentType != request.appointmentType)
+            if (request.Slot.appointmentType != request.AppointmentType)
             {
-                return BadRequest(new ValidationError {field = "slot.appointmentType", message = "Slot's appointment type must match appointment's type" });
+                return BadRequest(new ValidationError {Field = "slot.appointmentType", Message = "Slot's appointment type must match appointment's type" });
             }
 
             // Create new Appointment
-            Appointment newAppointment = new Appointment(request.slot, request.appointmentType, AppointmentStatus.Booked) { Id = Guid.NewGuid().ToString() };
+            Appointment newAppointment = new Appointment(request.Slot, request.AppointmentType, AppointmentStatus.Booked) { Id = Guid.NewGuid().ToString() };
             _appointmentDb.Push(newAppointment);
 
             return Created(string.Empty, newAppointment);
@@ -76,7 +76,7 @@ namespace litfibretestapi.Controllers
                 return new NotFoundResult();
             }
 
-            appointment.Slot = request.slot;
+            appointment.Slot = request.Slot;
             _appointmentDb.Push(appointment);
 
             return new JsonResult(appointment);
@@ -94,7 +94,7 @@ namespace litfibretestapi.Controllers
                 return new NotFoundResult();
             }
 
-            appointment.Status = request.status;
+            appointment.Status = request.Status;
             _appointmentDb.Push(appointment);
 
             return new JsonResult(appointment);

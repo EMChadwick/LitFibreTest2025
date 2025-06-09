@@ -13,18 +13,6 @@ namespace litfibretestapi.Datatabase.Real
     public class MemoryDatabase<T> : IMemoryDatabase<T> where T : DatabaseObject{
         private Dictionary<string, T> appointmentsTable = new Dictionary<string, T>();
 
-        public MemoryDatabase()
-        {
-            //Seed Appointments table
-            // List<T> appointments = JsonConvert.DeserializeObject<List<T>>(seedData?["appointments"].ToString());
-
-            // foreach (var appointment in appointments)
-            // {
-            //     appointment.Id = Guid.NewGuid().ToString();
-            //     this.appointmentsTable.Add(appointment.Id, appointment);
-            // }
-        }
-
 
         /// <summary>
         /// Retrieve an Appointment from the database

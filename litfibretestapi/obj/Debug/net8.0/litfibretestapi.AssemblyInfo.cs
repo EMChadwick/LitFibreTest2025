@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("litfibretestapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc0357274be1c4935c5e40ffde18be3ed3b777eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("litfibretestapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("litfibretestapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

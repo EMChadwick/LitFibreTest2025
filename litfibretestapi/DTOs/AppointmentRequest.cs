@@ -6,9 +6,9 @@ using litfibretestapi.Models;
 
 public class AppointmentRequest {
     [Required]
-    public AppointmentType appointmentType { get; set; }
+    public AppointmentType AppointmentType { get; set; }
 
 
     [Required]
-    public Slot slot { get; set; }
+    public Slot Slot { get; set; }
 }

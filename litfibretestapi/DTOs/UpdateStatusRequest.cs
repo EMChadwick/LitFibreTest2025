@@ -6,5 +6,5 @@ using litfibretestapi.Interfaces;
 
 public class UpdateStatusRequest : IAppointmentUpdateRequest {
     [Required]
-    public AppointmentStatus status { get; set; }
+    public AppointmentStatus Status { get; set; }
 }
