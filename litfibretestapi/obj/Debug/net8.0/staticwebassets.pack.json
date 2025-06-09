@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\swagger\\openapi.json",
+      "PackagePath": "staticwebassets\\swagger\\openapi.json"
+    },
+    {
+      "Id": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\swagger\\openapi.yaml",
+      "PackagePath": "staticwebassets\\swagger\\openapi.yaml"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.litfibretestapi.props",
+      "PackagePath": "build\\litfibretestapi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.litfibretestapi.props",
+      "PackagePath": "buildMultiTargeting\\litfibretestapi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.litfibretestapi.props",
+      "PackagePath": "buildTransitive\\litfibretestapi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.litfibretestapi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

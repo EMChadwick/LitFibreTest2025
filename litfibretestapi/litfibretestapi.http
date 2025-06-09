@@ -1,0 +1,6 @@
+@litfibretestapi_HostAddress = http://localhost:5287
+
+GET {{litfibretestapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

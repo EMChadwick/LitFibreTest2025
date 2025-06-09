@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "yNxyMOcgiThKUhyfz9H7AN3rCFMyjK5Zw8ac9yJ0GXo=",
+  "Source": "litfibretestapi",
+  "BasePath": "_content/litfibretestapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "litfibretestapi\\wwwroot",
+      "Source": "litfibretestapi",
+      "ContentRoot": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\",
+      "BasePath": "_content/litfibretestapi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\swagger\\openapi.json",
+      "SourceId": "litfibretestapi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\",
+      "BasePath": "_content/litfibretestapi",
+      "RelativePath": "swagger/openapi.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger\\openapi.json"
+    },
+    {
+      "Identity": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\swagger\\openapi.yaml",
+      "SourceId": "litfibretestapi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\magic\\Documents\\GitHub\\LitFibreTest2025\\litfibretestapi\\wwwroot\\",
+      "BasePath": "_content/litfibretestapi",
+      "RelativePath": "swagger/openapi.yaml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger\\openapi.yaml"
+    }
+  ]
+}

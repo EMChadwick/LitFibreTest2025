@@ -1,0 +1,291 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Lit Fibre Mock Appointment API",
+    "description": "## What the API is:\nThis is a simplified representation of the kind of API you see all across the fibre industry (and telecomms in general), where retailers need to be able to manage appointments with their providers. \n\nThis API implements CRUD operations for the appointments that would be stored in a provider's scheduling database, as well as an endpoint to retrieve future dates & times that are available to be booked. For this endpoint we recommend just generating a couple of 4-hour slots per weekday, from tomorrow until 30 days in the future.\n\nMany times we'll have different appointment types: commonly we just want to book a customer in to get their fibre connection installed. However, we also need to be able to book in maintenance if a connection breaks, or a survey if the provider isn't sure if the property is fully ready to connect. As these require differently trained resources, it's important that the API validates these types when a client submits create and update requests.\n\n## What we want from you:\nCreate a mock ASP.NET API in .NET 8 that implements this Swagger schema. At a minimum, your API should validate that requests match the correct schemas, and it should respond with objects that match the corresponding response schemas.\n\nThe data can be pure mock data, i.e. hard-coded, but you'll get bonus points for implementing a simple in-memory database. We don't recommend integrating a real database for the sake of the test, but hey, we're not going to tell you how to live your life if that's what you want to do.\n\nThings we'd like to see you use in your implementation:\n- Object Oriented Programming techniques.    \n- One or more examples of dependency injection.\n\nSome ideas if you want to go above and beyond:\n- API authentication.\n- An example of unit testing.\n\nTools you'll need:\n- Visual Studio with .NET 8 tools installed.\n- [Swagger Editor](https://editor.swagger.io/).\n- A brain, or your preferred search engine.\n\nTools we don't want you to use:\n- AI codegen. Using LLMs in the course of doing research is OK, e.g. Gemini results when using Google or for rubber ducking, but the code you submit to us should be 100% yours.\n- Swagger/OpenAPI generators. Yes, if you upload the schema to some tools they'll generate the C# controllers and models for you, which is great for productivity, not so great for showing us your problem solving skills.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/appointment": {
+      "post": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Create a new appointment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Appointment created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/appointment/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "Appointment ID",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Retrieve an appointment",
+        "responses": {
+          "200": {
+            "description": "Appointment returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Appointment not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Update appointment time or status",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSlotRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateStatusRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Appointment updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Appointment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Appointment not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Cancel an appointment",
+        "responses": {
+          "204": {
+            "description": "Appointment deleted"
+          },
+          "404": {
+            "description": "Appointment not found"
+          }
+        }
+      }
+    },
+    "/slots/{type}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Appointment Type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Appointment Slots"
+        ],
+        "summary": "Get available appointment slots",
+        "responses": {
+          "200": {
+            "description": "Returned slots",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlotArray"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Appointment type not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppointmentType": {
+        "type": "string",
+        "enum": [
+          "Installation",
+          "Maintenance",
+          "Survey"
+        ]
+      },
+      "AppointmentStatus": {
+        "type": "string",
+        "enum": [
+          "Booked",
+          "Complete",
+          "Cancelled",
+          "Delayed"
+        ]
+      },
+      "Appointment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AppointmentType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AppointmentStatus"
+          },
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          }
+        }
+      },
+      "AppointmentRequest": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AppointmentType"
+          },
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          }
+        },
+        "required": [
+          "type",
+          "slot"
+        ]
+      },
+      "UpdateStatusRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/AppointmentStatus"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "UpdateSlotRequest": {
+        "type": "object",
+        "properties": {
+          "slot": {
+            "$ref": "#/components/schemas/Slot"
+          }
+        },
+        "required": [
+          "slot"
+        ]
+      },
+      "Slot": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AppointmentType"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "type",
+          "start",
+          "end"
+        ]
+      },
+      "SlotArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Slot"
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
